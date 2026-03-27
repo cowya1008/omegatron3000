@@ -2,83 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Otter & Shrimp</title>
+  <title>Otter & Shrimp World</title>
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to top, #a0e7e5, #b4f8c8);
-      font-family: "Comic Sans MS", cursive;
       overflow: hidden;
+      background: linear-gradient(to top, #89f7fe, #66a6ff);
+      font-family: "Comic Sans MS", cursive;
     }
 
     .scene {
       text-align: center;
       position: relative;
+      height: 100vh;
     }
 
+    /* Title Image */
     .title-img {
       width: 220px;
-      margin-bottom: 20px;
+      margin-top: 20px;
       animation: float 3s infinite ease-in-out;
     }
 
+    /* Otter */
     .otter {
-      font-size: 80px;
-      animation: bounce 2s infinite ease-in-out;
+      font-size: 90px;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: 0.3s;
     }
 
+    /* Shrimp */
     .shrimp {
-      font-size: 50px;
+      font-size: 60px;
       position: absolute;
-      left: 60%;
       top: 40%;
-      animation: float 3s infinite ease-in-out;
+      left: 40%;
+      cursor: pointer;
+      animation: wiggle 2s infinite;
     }
 
-    .heart {
+    /* Bubbles */
+    .bubble {
       position: absolute;
+      bottom: -50px;
       font-size: 20px;
-      animation: rise 3s infinite;
-      opacity: 0.8;
+      animation: rise 6s infinite;
+      opacity: 0.6;
     }
 
-    .heart:nth-child(1) { left: 45%; top: 60%; animation-delay: 0s; }
-    .heart:nth-child(2) { left: 55%; top: 65%; animation-delay: 1s; }
-    .heart:nth-child(3) { left: 50%; top: 70%; animation-delay: 2s; }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
+    /* Animations */
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(10deg); }
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes wiggle {
+      0%,100% { transform: rotate(0); }
+      50% { transform: rotate(15deg); }
     }
 
     @keyframes rise {
-      0% { transform: translateY(0); opacity: 0.8; }
-      100% { transform: translateY(-80px); opacity: 0; }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
     }
+
   </style>
 </head>
+
 <body>
 
 <div class="scene">
-  <!-- THIS is your title now -->
-  <img src="nunung.jpg" alt="Title" class="title-img">
 
-  <div class="otter">🦦</div>
-  <div class="shrimp">🦐</div>
+  <!-- Title -->
+  <img src="nunung.jpg" class="title-img">
 
-  <div class="heart">💚</div>
-  <div class="heart">💚</div>
-  <div class="heart">💚</div>
+  <!-- Otter -->
+  <div class="otter" id="otter">🦦</div>
+
+  <!-- Shrimp -->
+  <div class="shrimp" id="shrimp">🦐</div>
+
+  <!-- Sound -->
+  <audio id="cuteSound" src="cute.mp3"></audio>
+
 </div>
+
+<script>
+  const shrimp = document.getElementById("shrimp");
+  const otter = document.getElementById("otter");
+  const sound = document.getElementById("cuteSound");
+
+  // Move shrimp randomly
+  function moveShrimp() {
+    const x = Math.random() * window.innerWidth * 0.8;
+    const y = Math.random() * window.innerHeight * 0.6;
+    shrimp.style.left = x + "px";
+    shrimp.style.top = y + "px";
+  }
+
+  setInterval(moveShrimp, 2000);
+
+  // Click shrimp interaction
+  shrimp.addEventListener("click", () => {
+    sound.play();
+
+    otter.innerHTML = "😋";
+
+    setTimeout(() => {
+      otter.innerHTML = "🦦";
+    }, 800);
+
+    moveShrimp();
+  });
+
+  // Create bubbles
+  function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+    bubble.innerHTML = "🫧";
+
+    bubble.style.left = Math.random() * 100 + "vw";
+    bubble.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(bubble);
+
+    setTimeout(() => {
+      bubble.remove();
+    }, 6000);
+  }
+
+  setInterval(createBubble, 500);
+
+</script>
 
 </body>
 </html>
