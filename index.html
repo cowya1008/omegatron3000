@@ -2,90 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NCT WISH Cute Page</title>
+  <title>Happy Otter & Shrimp</title>
   <style>
     body {
       margin: 0;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #d4f8e8, #a0e7e5);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, #a0e7e5, #b4f8c8);
       font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
+    }
+
+    .scene {
+      text-align: center;
+      position: relative;
+    }
+
+    .title-img {
+      width: 180px;
+      margin-bottom: 10px;
+      animation: float 3s infinite ease-in-out;
     }
 
     h1 {
-      text-align: center;
-      margin-top: 20px;
       color: #2b7a78;
+      margin-bottom: 20px;
     }
 
-    .character {
+    .otter {
+      font-size: 80px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    .shrimp {
+      font-size: 50px;
       position: absolute;
-      width: 120px;
-      text-align: center;
-      animation: float 4s ease-in-out infinite;
+      left: 60%;
+      top: 40%;
+      animation: float 3s infinite ease-in-out;
     }
 
-    .bubble {
-      background: white;
-      border-radius: 50%;
-      padding: 20px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      font-size: 14px;
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: rise 3s infinite;
+      opacity: 0.8;
     }
 
-    .name {
-      margin-top: 8px;
-      font-weight: bold;
-      color: #116466;
+    .heart:nth-child(1) { left: 45%; top: 60%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 55%; top: 65%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 50%; top: 70%; animation-delay: 2s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
     }
 
-    /* Positions */
-    .c1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .c2 { top: 20%; left: 70%; animation-delay: 1s; }
-    .c3 { top: 50%; left: 15%; animation-delay: 2s; }
-    .c4 { top: 60%; left: 75%; animation-delay: 0.5s; }
-    .c5 { top: 35%; left: 40%; animation-delay: 1.5s; }
-    .c6 { top: 75%; left: 45%; animation-delay: 2.5s; }
-
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-80px); opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
-<h1>✨ NCT WISH Hangout ✨</h1>
+<div class="scene">
+  <!-- Your image title -->
+  <img src="nunung.png" alt="Nunung Title" class="title-img">
 
-<div class="character c1">
-  <div class="bubble">💚</div>
-  <div class="name">Sion</div>
-</div>
+  <h1>🦦 Otter Loves Shrimp 🦐</h1>
 
-<div class="character c2">
-  <div class="bubble">🌟</div>
-  <div class="name">Riku</div>
-</div>
+  <div class="otter">🦦</div>
+  <div class="shrimp">🦐</div>
 
-<div class="character c3">
-  <div class="bubble">🍀</div>
-  <div class="name">Yushi</div>
-</div>
-
-<div class="character c4">
-  <div class="bubble">🧸</div>
-  <div class="name">Jaehee</div>
-</div>
-
-<div class="character c5">
-  <div class="bubble">🎧</div>
-  <div class="name">Ryo</div>
-</div>
-
-<div class="character c6">
-  <div class="bubble">✨</div>
-  <div class="name">Sakuya</div>
+  <div class="heart">💚</div>
+  <div class="heart">💚</div>
+  <div class="heart">💚</div>
 </div>
 
 </body>
